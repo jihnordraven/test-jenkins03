@@ -25,10 +25,12 @@ pipeline {
         }
         stage("Push image") {
             steps {
-                withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                    sh "docker login -u jihnordraven -p ${dockerhubpwd}"
-                    sh "docker push ${IMAGE_REPO}/${IMAGE_NAME}:${BUILD_ID}"
-                }
+                sh "docker login -u jihnordraven -p Qeadws123321%"
+                sh "docker push ${IMAGE_REPO}/${IMAGE_NAME}:${BUILD_ID}"
+                // withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                //     sh "docker login -u jihnordraven -p ${dockerhubpwd}"
+                //     sh "docker push ${IMAGE_REPO}/${IMAGE_NAME}:${BUILD_ID}"
+                // }
             }
         }
         stage("Delete image") {
