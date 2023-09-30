@@ -23,27 +23,27 @@ pipeline {
                 }
             }
         }
-        stage("Build image") {
-            steps {
-                script {
-                    sh "docker build ${REPOSITORY}/${IMAGE_NAME}:${IMAGE_TAG}"
-                }
-            }
-        }
-        stage("Push image") {
-            steps {
-                script {
-                    withD
-                }
-            }
-        }
-        stage("Deploy") {}
-        stage("Delete image") {
-            steps {
-                script {
-                    sh "docker rmi ${REPOSIOTYR}/${IMAGE_NAME}:${IMAGE_TAG}"
-                }
-            }
-        }
+        // stage("Build image") {
+        //     steps {
+        //         script {
+        //             sh "docker build ${REPOSITORY}/${IMAGE_NAME}:${IMAGE_TAG}"
+        //         }
+        //     }
+        // }
+        // stage("Push image") {
+        //     steps {
+        //         script {
+        //             withD
+        //         }
+        //     }
+        // }
+        // stage("Deploy") {}
+        // stage("Delete image") {
+        //     steps {
+        //         script {
+        //             sh "docker rmi ${REPOSIOTYR}/${IMAGE_NAME}:${IMAGE_TAG}"
+        //         }
+        //     }
+        // }
     }
 }
