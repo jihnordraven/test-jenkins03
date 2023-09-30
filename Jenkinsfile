@@ -20,7 +20,7 @@ pipeline {
         }
         stage("Build image") {
             steps {
-                sh "docker build ${IMAGE_REPO}/${IMAGE_NAME}:${BUILD_ID}"
+                sh "docker build -t ${IMAGE_REPO}/${IMAGE_NAME}:${BUILD_ID} ."
             }
         }
         stage("Push image") {
