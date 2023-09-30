@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_REPO = jihnordraven
-        IMAGE_NAME = test-app
+        IMAGE_REPO = "jihnordraven"
+        IMAGE_NAME = "test-app"
     }
 
     stages {
