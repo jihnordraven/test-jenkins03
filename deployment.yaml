@@ -1,0 +1,22 @@
+apiVerson: apps/v1
+kind: Deployment
+metadata:
+  name: test-app-deployment
+  labels:
+    app: test-app-deployment
+    author: "Anton Deulia"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: test-app-deployment
+  template:
+    metadata:
+      labels:
+        app: test-app-deployment
+    spec:
+      containers:
+        - name: test-app-container
+          image: 316614134563.dkr.ecr.us-east-1.amazonaws.com/my-repo:latest
+          ports:
+            - containerPort: 3000

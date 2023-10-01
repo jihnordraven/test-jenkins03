@@ -52,15 +52,15 @@ pipeline {
                 echo "Finish push image"
             }
         }
-        // stage("Declaretive: Deploy to kubernetes") {
-        //     steps {
-        //         echo "Start deploy to kubernetes"
-        //         script {
-
-        //         }
-        //         echo "Finish deploy to kubernetes"
-        //     }
-        // }
+        stage("Declaretive: Kube deploy") {
+            steps {
+                echo "Start kube deploy"
+                    withKubeConfig(caCertificate: '', clusterName: 'my-cluster', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                        sh "kubectl apply -f deployment.yaml"
+                        sh "kubectl apply -f loadBalancer.yaml"
+                    }
+            }
+        }
         // stage("Declaretive: Delete image localy") {
         //     steps {
         //         echo "Start delete image localy"
