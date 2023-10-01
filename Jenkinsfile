@@ -6,7 +6,7 @@ pipeline {
     }
 
     stages {
-        stage("Npm install") {
+        stage("Declaretive: Npm install") {
             steps {
                 echo "Start npm install"
                 script {
@@ -15,7 +15,7 @@ pipeline {
                 echo "Finish npm install"
             }
         }
-        stage("Unit test") {
+        stage("Declaretive: Unit test") {
             steps {
                 echo "Start unit test"
                 script {
@@ -24,7 +24,7 @@ pipeline {
                 echo "Finish unit test"
             }
         }
-        stage("E2e test") {
+        stage("Declaretive: E2e test") {
             steps {
                 echo "Start e2e test"
                 script {
@@ -33,7 +33,7 @@ pipeline {
                 echo "Finish e2e test"
             }
         }
-        stage("Build image") {
+        stage("Declaretive: Build image") {
             steps {
                 echo "Start build image"
                 script {
@@ -42,7 +42,7 @@ pipeline {
                 echo "Finish build image"
             }
         }
-        // stage("Push image") {
+        // stage("Declaretive: Push image") {
         //     steps {
         //         echo "Start push image"
         //         script {
@@ -51,7 +51,7 @@ pipeline {
         //         echo "Finish push image"
         //     }
         // }
-        // stage("Deploy to kubernetes") {
+        // stage("Declaretive: Deploy to kubernetes") {
         //     steps {
         //         echo "Start deploy to kubernetes"
         //         script {
@@ -60,14 +60,14 @@ pipeline {
         //         echo "Finish deploy to kubernetes"
         //     }
         // }
-        // stage("Delete image localy") {
+        // stage("Declaretive: Delete image localy") {
         //     steps {
         //         echo "Start delete image localy"
 
         //         echo "Finish delete image localy"
         //     }
         // }
-        // stage("Finish") {
+        // stage("Declaretive: Finish") {
         //     steps {
         //         echo "Finish CI/CD pipeline"
         //     }
