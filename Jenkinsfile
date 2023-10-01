@@ -61,17 +61,19 @@ pipeline {
                     }
             }
         }
-        // stage("Declaretive: Delete image localy") {
-        //     steps {
-        //         echo "Start delete image localy"
-
-        //         echo "Finish delete image localy"
-        //     }
-        // }
-        // stage("Declaretive: Finish") {
-        //     steps {
-        //         echo "Finish CI/CD pipeline"
-        //     }
-        // }
+        stage("Declaretive: Delete image localy") {
+            steps {
+                echo "Start delete image localy"
+                    script {
+                        sh "docker rmi ${registry}"
+                    }
+                echo "Finish delete image localy"
+            }
+        }
+        stage("Declaretive: Finish") {
+            steps {
+                echo "Finish CI/CD pipeline"
+            }
+        }
     }
 }
