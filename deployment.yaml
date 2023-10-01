@@ -4,7 +4,6 @@ metadata:
   name: test-app-deployment
   labels:
     app: test-app-deployment
-    author: "Anton Deulia"
 spec:
   replicas: 2
   selector:
