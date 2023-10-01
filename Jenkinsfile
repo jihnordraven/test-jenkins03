@@ -37,7 +37,7 @@ pipeline {
             steps {
                 echo "Start build image"
                     script {
-                        "docker build -t my-repo ."
+                        "docker build -t ${registry} ."
                     }
                 echo "Finish build image"
             }
