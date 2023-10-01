@@ -55,7 +55,7 @@ pipeline {
         stage("Declaretive: Kube deploy") {
             steps {
                 echo "Start kube deploy"
-                    withKubeConfig(caCertificate: '', clusterName: 'my-cluster', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
                         sh "kubectl apply -f deployment.yaml"
                         sh "kubectl apply -f loadBalancer.yaml"
                     }
