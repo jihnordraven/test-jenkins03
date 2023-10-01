@@ -47,7 +47,7 @@ pipeline {
                 echo "Start push image"
                     script {
                         sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 316614134563.dkr.ecr.us-east-1.amazonaws.com"
-                        sh "docker push 316614134563.dkr.ecr.us-east-1.amazonaws.com/my-repo:${BUILD_NUMBER}"
+                        sh "docker push 316614134563.dkr.ecr.us-east-1.amazonaws.com/my-repo:${BUILD_ID}"
                     }
                 echo "Finish push image"
             }
@@ -65,7 +65,7 @@ pipeline {
             steps {
                 echo "Start delete image localy"
                     script {
-                        sh "docker rmi ${registry}:${BUILD_NUMBER}"
+                        sh "docker rmi ${registry}:${BUILD_ID}"
                     }
                 echo "Finish delete image localy"
             }
