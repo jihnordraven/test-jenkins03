@@ -46,7 +46,7 @@ pipeline {
             steps {
                 echo "Start tag image"
                 script {
-                    sh "docker tag my-repo:${BUILD_ID} 316614134563.dkr.ecr.us-east-1.amazonaws.com/my-repo:${BUILD_ID}"
+                    sh "docker tag my-repo:latest 316614134563.dkr.ecr.us-east-1.amazonaws.com/my-repo:latest"
                 }
                 echo "Finish tag image"
             }
@@ -56,7 +56,7 @@ pipeline {
                 echo "Start push image"
                     script {
                         sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 316614134563.dkr.ecr.us-east-1.amazonaws.com"
-                        sh "docker push 316614134563.dkr.ecr.us-east-1.amazonaws.com/my-repo:${BUILD_ID}"
+                        sh "docker push 316614134563.dkr.ecr.us-east-1.amazonaws.com/my-repo:latest"
                     }
                 echo "Finish push image"
             }
@@ -74,7 +74,7 @@ pipeline {
             steps {
                 echo "Start delete image localy"
                     script {
-                        sh "docker rmi ${registry}:${BUILD_ID}"
+                        sh "docker rmi ${registry}:latest"
                     }
                 echo "Finish delete image localy"
             }
