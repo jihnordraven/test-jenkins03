@@ -2,46 +2,75 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_REPO = "jihnordraven"
-        IMAGE_NAME = "test-app"
+        registry = "316614134563.dkr.ecr.us-east-1.amazonaws.com/my-repo"
     }
 
     stages {
+        stage("Npm install") {
+            steps {
+                echo "Start npm install"
+                script {
+                    sh "npm install"
+                }
+                echo "Finish npm install"
+            }
+        }
         stage("Unit test") {
             steps {
-                sh "npm install"
-                sh "npm run test"
+                echo "Start unit test"
+                script {
+                    sh "npm run test"
+                }
+                echo "Finish unit test"
             }
         }
         stage("E2e test") {
             steps {
-                sh "npm run test:e2e"
+                echo "Start e2e test"
+                script {
+                    sh "npm run test:e2e"
+                }
+                echo "Finish e2e test"
             }
         }
         stage("Build image") {
             steps {
-                sh "docker build -t ${IMAGE_REPO}/${IMAGE_NAME}:${BUILD_ID} ."
-            }
-        }
-        stage("Push image") {
-            steps {
-                // sh "docker login -u jihnordraven -p Qeadws123321%"
-                // sh "docker push ${IMAGE_REPO}/${IMAGE_NAME}:${BUILD_ID}"
-                withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                    sh "docker login -u jihnordraven -p ${dockerhubpwd}"
-                    sh "docker push ${IMAGE_REPO}/${IMAGE_NAME}:${BUILD_ID}"
+                echo "Start build image"
+                script {
+                    docker.build registry
                 }
+                echo "Finish build image"
             }
         }
-        stage("Delete image") {
-            steps {
-                sh "docker rmi ${IMAGE_REPO}/${IMAGE_NAME}:${BUILD_ID}"
-            }
-        }
-        stage("Finish") {
-            steps {
-                echo "Finish Successfully"
-            }
-        }
+        // stage("Push image") {
+        //     steps {
+        //         echo "Start push image"
+        //         script {
+
+        //         }
+        //         echo "Finish push image"
+        //     }
+        // }
+        // stage("Deploy to kubernetes") {
+        //     steps {
+        //         echo "Start deploy to kubernetes"
+        //         script {
+
+        //         }
+        //         echo "Finish deploy to kubernetes"
+        //     }
+        // }
+        // stage("Delete image localy") {
+        //     steps {
+        //         echo "Start delete image localy"
+
+        //         echo "Finish delete image localy"
+        //     }
+        // }
+        // stage("Finish") {
+        //     steps {
+        //         echo "Finish CI/CD pipeline"
+        //     }
+        // }
     }
 }
