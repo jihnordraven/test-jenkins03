@@ -42,15 +42,6 @@ pipeline {
                 echo "Finish build image"
             }
         }
-        stage("Tag image") {
-            steps {
-                echo "Start tag image"
-                script {
-                    sh "docker tag my-repo 316614134563.dkr.ecr.us-east-1.amazonaws.com/my-repo"
-                }
-                echo "Finish tag image"
-            }
-        }
         stage("Declaretive: Push image") {
             steps {
                 echo "Start push image"
