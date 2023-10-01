@@ -37,7 +37,7 @@ pipeline {
             steps {
                 echo "Start build image"
                     script {
-                        docker.build registry
+                        "docker build -t my-repo ."
                     }
                 echo "Finish build image"
             }
