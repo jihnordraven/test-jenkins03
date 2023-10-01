@@ -37,7 +37,7 @@ pipeline {
             steps {
                 echo "Start build image"
                     script {
-                        "docker build -t ${registry} ."
+                        "docker build -t 316614134563.dkr.ecr.us-east-1.amazonaws.com/my-repo ."
                     }
                 echo "Finish build image"
             }
