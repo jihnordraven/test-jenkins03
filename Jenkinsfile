@@ -42,6 +42,15 @@ pipeline {
                 echo "Finish build image"
             }
         }
+        stage("Tag image") {
+            steps {
+                echo "Start tag image"
+                script {
+                    sh "docker tag my-repo:${BUILD_ID} 316614134563.dkr.ecr.us-east-1.amazonaws.com/my-repo:${BUILD_ID}"
+                }
+                echo "Finish tag image"
+            }
+        }
         stage("Declaretive: Push image") {
             steps {
                 echo "Start push image"
@@ -61,7 +70,7 @@ pipeline {
                     }
             }
         }
-        stage("Declaretive: Delete image localy") {
+        stage("Declaretive: Delete image") {
             steps {
                 echo "Start delete image localy"
                     script {
