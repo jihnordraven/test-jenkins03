@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: test-app-container
-          image: 316614134563.dkr.ecr.us-east-1.amazonaws.com/my-repo:latest
+          image: 316614134563.dkr.ecr.us-east-1.amazonaws.com/my-repo
           ports:
             - containerPort: 3000
