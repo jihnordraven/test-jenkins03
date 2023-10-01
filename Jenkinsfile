@@ -46,7 +46,7 @@ pipeline {
             steps {
                 echo "Start tag image"
                 script {
-                    sh "docker tag my-repo:latest 316614134563.dkr.ecr.us-east-1.amazonaws.com/my-repo:latest"
+                    sh "docker tag my-repo:latest 316614134563.dkr.ecr.us-east-1.amazonaws.com/my-repo"
                 }
                 echo "Finish tag image"
             }
